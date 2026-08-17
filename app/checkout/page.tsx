@@ -68,128 +68,127 @@ export default function CheckoutPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col bg-paper-beige">
+    <main className="flex min-h-screen flex-col bg-white text-[#1A1A1A] font-jakarta">
       <Navbar />
       
-      <section className="pt-24 sm:pt-28 pb-16 sm:pb-20">
-        <div className="container mx-auto px-4 sm:px-6 md:px-12 max-w-5xl">
+      <section className="pt-32 sm:pt-36 pb-20">
+        <div className="container mx-auto px-4 sm:px-8 md:px-12 max-w-5xl text-left">
+          
           {/* Back link */}
-          <Link href="/cart" className="inline-flex items-center text-xs font-manrope font-bold text-charcoal/50 hover:text-coral transition-colors mb-6 sm:mb-8 uppercase tracking-widest gap-2 group">
+          <Link href="/cart" className="inline-flex items-center text-xs font-bold text-neutral-500 hover:text-[#0C4A60] transition-colors mb-6 uppercase tracking-wider gap-1.5 group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Back to Cart
+            Back to Basket
           </Link>
 
           {/* Main Card Container */}
-          <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-4 sm:p-6 md:p-10 border border-charcoal/10 shadow-sm grid md:grid-cols-12 gap-6 md:gap-8 lg:gap-12 items-start overflow-hidden">
+          <div className="bg-[#F8F8F7] rounded-xs p-6 md:p-10 border border-neutral-200 shadow-xs grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
             
             {/* Left: Shipping & Payment Form */}
-            <div className="md:col-span-7 space-y-6 sm:space-y-8 w-full min-w-0">
+            <div className="md:col-span-7 space-y-6 w-full min-w-0">
               <div>
-                <h2 className="text-lg sm:text-xl font-newsreader font-bold text-charcoal mb-4 flex items-center gap-2 border-b border-charcoal/10 pb-3">
-                  <span className="w-6 h-6 rounded-full bg-coral text-white text-xs font-bold font-manrope flex items-center justify-center flex-shrink-0">1</span>
-                  Contact & Delivery Details
+                <h2 className="text-lg font-serif font-bold text-[#1A1A1A] mb-4 flex items-center gap-2 border-b border-neutral-200 pb-3">
+                  <span className="w-5 h-5 rounded-full bg-[#0C4A60] text-white text-xs font-bold flex items-center justify-center flex-shrink-0">1</span>
+                  Recipient Details (EPUB Delivery)
                 </h2>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                  <div className="col-span-1">
-                    <label className="block text-xs font-manrope font-bold text-charcoal/60 mb-1">First Name</label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-bold text-neutral-600 mb-1">First Name</label>
                     <input 
                       type="text" 
                       placeholder="Jane"
-                      className="w-full min-w-0 bg-white border border-charcoal/15 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-manrope text-charcoal focus:outline-none focus:ring-2 focus:ring-coral/20 focus:border-coral transition-all" 
+                      className="w-full bg-white border border-neutral-300 rounded-xs px-3.5 py-2 text-xs text-[#1A1A1A] focus:outline-none focus:border-[#0C4A60] transition-colors" 
                     />
                   </div>
-                  <div className="col-span-1">
-                    <label className="block text-xs font-manrope font-bold text-charcoal/60 mb-1">Last Name</label>
+                  <div>
+                    <label className="block text-xs font-bold text-neutral-600 mb-1">Last Name</label>
                     <input 
                       type="text" 
-                      placeholder="Doe"
-                      className="w-full min-w-0 bg-white border border-charcoal/15 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-manrope text-charcoal focus:outline-none focus:ring-2 focus:ring-coral/20 focus:border-coral transition-all" 
+                      placeholder="Austen"
+                      className="w-full bg-white border border-neutral-300 rounded-xs px-3.5 py-2 text-xs text-[#1A1A1A] focus:outline-none focus:border-[#0C4A60] transition-colors" 
                     />
                   </div>
-                  <div className="col-span-1 sm:col-span-2">
-                    <label className="block text-xs font-manrope font-bold text-charcoal/60 mb-1">Email Address (for EPUB Delivery)</label>
+                  <div className="sm:col-span-2">
+                    <label className="block text-xs font-bold text-neutral-600 mb-1">Email Address for EPUB Download Link</label>
                     <input 
                       type="email" 
-                      placeholder="jane.doe@example.com"
-                      className="w-full min-w-0 bg-white border border-charcoal/15 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-manrope text-charcoal focus:outline-none focus:ring-2 focus:ring-coral/20 focus:border-coral transition-all" 
+                      placeholder="jane.austen@literary.org"
+                      className="w-full bg-white border border-neutral-300 rounded-xs px-3.5 py-2 text-xs text-[#1A1A1A] focus:outline-none focus:border-[#0C4A60] transition-colors" 
                     />
                   </div>
                 </div>
               </div>
 
               <div>
-                <h2 className="text-lg sm:text-xl font-newsreader font-bold text-charcoal mb-4 flex items-center gap-2 border-b border-charcoal/10 pb-3">
-                  <span className="w-6 h-6 rounded-full bg-coral text-white text-xs font-bold font-manrope flex items-center justify-center flex-shrink-0">2</span>
-                  Payment Gateway
+                <h2 className="text-lg font-serif font-bold text-[#1A1A1A] mb-4 flex items-center gap-2 border-b border-neutral-200 pb-3">
+                  <span className="w-5 h-5 rounded-full bg-[#0C4A60] text-white text-xs font-bold flex items-center justify-center flex-shrink-0">2</span>
+                  Secure Payment Gateway
                 </h2>
                 
-                <div className="space-y-3">
-                  <div className="bg-white border-2 border-coral p-3.5 sm:p-4 rounded-2xl flex items-center justify-between shadow-xs gap-3">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-8 h-8 rounded-full bg-coral/10 text-coral flex items-center justify-center flex-shrink-0">
-                        <CreditCard className="w-4 h-4" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-xs font-bold text-charcoal font-manrope truncate">Stripe Secure Checkout</div>
-                        <div className="text-[10px] sm:text-[11px] text-charcoal/50 truncate">Credit / Debit Card, Apple Pay</div>
-                      </div>
+                <div className="bg-white border-2 border-[#0C4A60] p-4 rounded-xs flex items-center justify-between shadow-xs">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-xs bg-emerald-50 text-[#0C4A60] flex items-center justify-center">
+                      <CreditCard className="w-4 h-4" />
                     </div>
-                    <CheckCircle2 className="w-5 h-5 text-coral flex-shrink-0" />
+                    <div>
+                      <div className="text-xs font-bold text-[#1A1A1A]">Stripe Verified Checkout</div>
+                      <div className="text-[11px] text-neutral-500">Credit / Debit Card, Apple Pay, Google Pay</div>
+                    </div>
                   </div>
+                  <CheckCircle2 className="w-5 h-5 text-[#0C4A60]" />
                 </div>
               </div>
             </div>
 
-            {/* Right: Order Summary Dark Card */}
+            {/* Right: Order Overview */}
             <div className="md:col-span-5 w-full min-w-0">
-              <div className="bg-gradient-to-br from-charcoal via-slate-900 to-indigo-950 text-paper-beige rounded-3xl p-4 sm:p-6 md:p-8 shadow-xl border border-charcoal/20 space-y-6">
-                <div className="flex items-center justify-between border-b border-paper-beige/10 pb-4">
-                  <h3 className="font-newsreader text-xl font-bold flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-coral" /> Order Overview
+              <div className="bg-white text-[#1A1A1A] rounded-xs p-6 shadow-xs border border-neutral-300 space-y-6">
+                <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
+                  <h3 className="font-serif text-lg font-bold flex items-center gap-2 text-[#1A1A1A]">
+                    <Sparkles className="w-4 h-4 text-[#0C4A60]" /> Basket Summary
                   </h3>
-                  <span className="text-xs font-manrope font-semibold text-paper-beige/40">
-                    {cartCount} {cartCount === 1 ? 'Volume' : 'Volumes'}
+                  <span className="text-xs font-bold text-neutral-500">
+                    {cartCount} {cartCount === 1 ? 'Title' : 'Titles'}
                   </span>
                 </div>
 
-                {/* Items Thumbnails List */}
-                <div className="space-y-3 max-h-48 overflow-y-auto pr-1">
+                {/* Items List */}
+                <div className="space-y-2.5 max-h-48 overflow-y-auto pr-1">
                   {fullCartItems.map(item => (
-                    <div key={item.id} className="flex items-center gap-3 bg-white/5 p-2 rounded-xl border border-white/5">
-                      <div className="w-9 aspect-[9/16] bg-charcoal/20 rounded overflow-hidden flex-shrink-0 border border-white/10">
+                    <div key={item.id} className="flex items-center gap-2.5 bg-[#F8F8F7] p-2 rounded-xs border border-neutral-200">
+                      <div className="w-8 aspect-[3/4] bg-neutral-200 rounded-xs overflow-hidden flex-shrink-0">
                         {item.cover_url ? (
                           <img src={item.cover_url} alt={item.title} className="w-full h-full object-cover" />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-paper-beige/30">
+                          <div className="w-full h-full flex items-center justify-center text-neutral-400">
                             <BookOpen className="w-3 h-3" />
                           </div>
                         )}
                       </div>
                       <div className="flex-grow min-w-0 text-xs">
-                        <div className="font-bold text-paper-beige truncate">{item.title}</div>
-                        <div className="text-paper-beige/40 text-[10px] truncate">{item.author}</div>
+                        <div className="font-bold text-[#1A1A1A] truncate">{item.title}</div>
+                        <div className="text-neutral-500 text-[10px] truncate">{item.author}</div>
                       </div>
-                      <div className="text-xs font-bold text-coral whitespace-nowrap px-1">
-                        {item.price}
+                      <div className="text-xs font-bold text-[#0C4A60] whitespace-nowrap px-1">
+                        {item.price ? (item.price.startsWith("£") ? item.price : `£${item.price.replace("$", "")}`) : "£14.99"}
                       </div>
                     </div>
                   ))}
                 </div>
 
                 {/* Price Breakdown */}
-                <div className="pt-4 border-t border-paper-beige/10 space-y-2 font-manrope text-xs">
-                  <div className="flex justify-between text-paper-beige/70">
+                <div className="pt-3 border-t border-neutral-200 space-y-2 text-xs text-neutral-600">
+                  <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span>${cartTotal.toFixed(2)}</span>
+                    <span className="font-bold text-[#1A1A1A]">£{cartTotal.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-paper-beige/70">
-                    <span>Digital Packaging</span>
-                    <span className="text-emerald-400 font-bold">Complimentary</span>
+                  <div className="flex justify-between">
+                    <span>Instant Delivery</span>
+                    <span className="text-emerald-700 font-bold uppercase text-[10px]">COMPLIMENTARY</span>
                   </div>
-                  <div className="flex justify-between items-baseline pt-3 border-t border-paper-beige/10">
-                    <span className="text-sm font-bold">Total Due</span>
-                    <span className="text-3xl font-bold text-coral">${cartTotal.toFixed(2)}</span>
+                  <div className="flex justify-between items-baseline pt-3 border-t border-neutral-200">
+                    <span className="text-sm font-bold text-[#1A1A1A]">Total Due</span>
+                    <span className="text-2xl font-black text-[#0C4A60]">£{cartTotal.toFixed(2)}</span>
                   </div>
                 </div>
 
@@ -197,23 +196,23 @@ export default function CheckoutPage() {
                 <button 
                   onClick={handleCheckout}
                   disabled={loading || cartItems.length === 0}
-                  className="w-full bg-coral hover:bg-coral/90 text-white py-4 rounded-full font-manrope font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-lg shadow-coral/30 flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full bg-[#0C4A60] hover:bg-[#083344] text-white py-3.5 rounded-xs font-bold text-xs uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {loading ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Redirecting to Stripe...</span>
+                      <span>Authorizing Stripe...</span>
                     </>
                   ) : (
                     <>
                       <Lock className="w-4 h-4" />
-                      <span>Complete Purchase (${cartTotal.toFixed(2)})</span>
+                      <span>Authorize Payment (£{cartTotal.toFixed(2)})</span>
                     </>
                   )}
                 </button>
 
-                <div className="pt-2 flex items-center justify-center gap-1.5 text-[10px] font-manrope text-paper-beige/40 uppercase tracking-widest text-center">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <div className="pt-1 flex items-center justify-center gap-1.5 text-[10px] text-neutral-500 uppercase tracking-wider text-center">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                   <span>256-Bit SSL Encrypted Checkout</span>
                 </div>
               </div>

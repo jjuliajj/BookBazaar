@@ -1,124 +1,129 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowRight, Sparkles, Compass, BookOpen, Star, ShieldCheck } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Hero() {
-  const bazaarCategories = ["Philosophy", "Rare Manuscripts", "Global Classics", "Poetry", "History"];
-
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden bg-[#FAF6F0] border-b border-[#D97706]/20">
-      {/* Background Arch Overlay & Ambient Glow */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#D97706]/10 via-[#C85A32]/5 to-transparent pointer-events-none" />
-      
-      <div className="container mx-auto px-4 sm:px-8 md:px-12 max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+    <section className="pt-32 sm:pt-36 pb-8 bg-white font-jakarta">
+      <div className="container mx-auto px-4 sm:px-8 md:px-12 max-w-7xl relative">
+        
+        {/* Navigation Arrow Left */}
+        <button 
+          aria-label="Previous slide"
+          className="hidden md:flex absolute -left-2 lg:left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 bg-white/90 hover:bg-white text-[#0C4A60] rounded-full shadow-md items-center justify-center border border-neutral-200 transition-all hover:scale-110"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        {/* 3-Tile Promo Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 items-stretch">
           
-          {/* Left Asymmetric Hero Banner */}
-          <div className="lg:col-span-7 space-y-8 text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#D97706] text-white text-xs font-bold rounded-full shadow-md uppercase tracking-widest">
-              <Sparkles className="w-4 h-4 text-[#FAF6F0]" /> Grand Silk & Gold Bazaar
-            </div>
-
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black text-[#1C1917] leading-[1.05] tracking-tight">
-              Traverse The <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D97706] via-[#C85A32] to-[#B45309] italic font-normal">
-                Global Bazaar of Knowledge
-              </span>
-            </h1>
-
-            <p className="text-sm sm:text-base font-sans text-[#1C1917]/80 leading-relaxed max-w-xl">
-              An extraordinary digital marketplace curating rare manuscripts, ancient philosophy, and artisanal EPUB e-books gathered from grand literary bazaars worldwide.
-            </p>
-
-            {/* Direct Category Pill Quick Links */}
-            <div className="space-y-3 pt-2">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#D97706] block">
-                Explore Bazaar Pavilions:
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {bazaarCategories.map((cat) => (
-                  <Link
-                    key={cat}
-                    href={`/collections?genre=${encodeURIComponent(cat)}`}
-                    className="px-3.5 py-1.5 bg-white hover:bg-[#D97706] text-[#1C1917] hover:text-white rounded-xl border border-[#D97706]/30 text-xs font-bold transition-all duration-200 shadow-xs hover:shadow-md"
-                  >
-                    {cat}
-                  </Link>
-                ))}
+          {/* Tile 1: Book / Pick of the Month */}
+          <div className="bg-[#EAE8E3] rounded-sm p-6 flex flex-col justify-between relative overflow-hidden border border-neutral-300 min-h-[320px] text-left">
+            <div className="flex items-start justify-between">
+              {/* Circular Stamp */}
+              <div className="w-14 h-14 rounded-full bg-[#1A1A1A] text-white flex flex-col items-center justify-center text-center p-1 leading-tight flex-shrink-0 shadow-xs">
+                <span className="text-[8px] font-bold uppercase tracking-wider text-amber-300">BOOK</span>
+                <span className="text-[7px] text-neutral-300">OF THE</span>
+                <span className="text-[8px] font-black uppercase text-amber-300">MONTH</span>
+              </div>
+              
+              {/* Book Graphic */}
+              <div className="w-32 aspect-[3/4] bg-white rounded shadow-md border border-neutral-200 overflow-hidden transform rotate-2 hover:rotate-0 transition-transform">
+                <div className="w-full h-full bg-gradient-to-br from-teal-800 to-slate-900 flex flex-col items-center justify-center p-3 text-center text-white">
+                  <span className="text-[10px] font-serif font-bold uppercase tracking-wider text-amber-300">CURATED</span>
+                  <span className="text-sm font-serif font-black italic mt-1">WINGSPAN</span>
+                  <span className="text-[9px] text-neutral-300 mt-2">CLASSIC EDITION</span>
+                </div>
               </div>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="space-y-3 pt-4">
+              <h3 className="text-base font-serif font-bold text-[#1A1A1A] leading-snug">
+                Build up your digital library with this soaring curated edition
+              </h3>
               <Link 
-                href="/collections" 
-                className="bg-gradient-to-r from-[#D97706] to-[#C85A32] hover:from-[#C85A32] hover:to-[#D97706] text-white rounded-full px-9 py-4 font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-xl shadow-[#D97706]/20 flex items-center gap-2.5 hover:scale-105"
+                href="/collections"
+                className="inline-block bg-[#1A1A1A] hover:bg-[#0C4A60] text-white text-[11px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-xs transition-colors"
               >
-                <span>Enter The Bazaar Vault</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-
-              <Link 
-                href="/about" 
-                className="bg-white hover:bg-[#1C1917] text-[#1C1917] hover:text-[#FAF6F0] rounded-full px-8 py-4 border-2 border-[#D97706]/40 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-xs"
-              >
-                <Compass className="w-4 h-4 text-[#D97706]" />
-                <span>Bazaar Story</span>
+                FIND OUT MORE
               </Link>
             </div>
           </div>
 
-          {/* Right Side: 3D Stacked Overlapping Book Covers Gallery */}
-          <div className="lg:col-span-5 relative flex justify-center py-8">
-            <div className="relative w-full max-w-md aspect-[4/5] flex items-center justify-center">
-              
-              {/* Back Stack Book Card 1 */}
-              <div className="absolute top-4 left-4 w-48 aspect-[9/14] bg-[#1C1917] rounded-2xl border-2 border-[#D97706] shadow-xl rotate-[-12deg] opacity-80 overflow-hidden transform hover:rotate-[-6deg] transition-all duration-500 hidden sm:block">
-                <div className="p-4 text-white font-serif space-y-2">
-                  <span className="text-[9px] uppercase tracking-widest text-[#D97706]">Manuscript</span>
-                  <div className="text-sm font-bold">The Oriental Codex</div>
-                  <div className="text-[10px] text-white/60">Vol. 01</div>
+          {/* Tile 2: Signed & Exclusive Edition */}
+          <div className="bg-gradient-to-br from-[#00A896] via-[#028090] to-[#F0F3F4] rounded-sm p-6 flex flex-col justify-between relative overflow-hidden border border-teal-600 min-h-[320px] text-left text-white">
+            <div className="flex items-start justify-between">
+              <div>
+                <span className="text-2xl lg:text-3xl font-serif font-black tracking-tight block text-amber-300 drop-shadow-sm">
+                  Irvine
+                </span>
+                <span className="text-3xl lg:text-4xl font-serif font-black tracking-tight block text-white drop-shadow-sm">
+                  Welsh
+                </span>
+              </div>
+
+              {/* Signed Edition Badge */}
+              <div className="bg-white text-[#1A1A1A] text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-sm border border-neutral-300">
+                SIGNED EDITION
+              </div>
+            </div>
+
+            <div className="space-y-3 pt-4">
+              <p className="text-xs font-medium text-slate-100 leading-snug max-w-[200px]">
+                Viva Las Vegas with the bestselling Trainspotting author's digital masterwork.
+              </p>
+              <Link 
+                href="/collections?category=Fiction"
+                className="inline-block bg-white hover:bg-amber-300 text-[#1A1A1A] text-[11px] font-black uppercase tracking-widest px-6 py-2.5 rounded-xs transition-colors shadow-sm"
+              >
+                SHOP NOW
+              </Link>
+            </div>
+          </div>
+
+          {/* Tile 3: Spotlight Bestseller / Exclusive */}
+          <div className="bg-[#E7D7C1] rounded-sm p-6 flex flex-col justify-between relative overflow-hidden border border-neutral-300 min-h-[320px] text-left">
+            <div className="flex items-start justify-between">
+              {/* Book Cover */}
+              <div className="w-28 aspect-[3/4] bg-white rounded shadow-md border border-neutral-200 overflow-hidden transform -rotate-2 hover:rotate-0 transition-transform">
+                <div className="w-full h-full bg-gradient-to-b from-amber-600 to-amber-900 flex flex-col items-center justify-center p-3 text-center text-white">
+                  <span className="text-[9px] font-serif uppercase tracking-widest text-amber-200">EXCLUSIVE</span>
+                  <span className="text-xs font-serif font-bold mt-1">Yesteryear</span>
+                  <span className="text-[8px] text-amber-200 mt-2">Caro Claire Burke</span>
                 </div>
               </div>
 
-              {/* Back Stack Book Card 2 */}
-              <div className="absolute top-8 right-4 w-48 aspect-[9/14] bg-[#C85A32] rounded-2xl border-2 border-[#FAF6F0] shadow-xl rotate-[12deg] opacity-90 overflow-hidden transform hover:rotate-[6deg] transition-all duration-500 hidden sm:block">
-                <div className="p-4 text-white font-serif space-y-2">
-                  <span className="text-[9px] uppercase tracking-widest text-white/80">Philosophy</span>
-                  <div className="text-sm font-bold">Timeless Wisdom</div>
-                  <div className="text-[10px] text-white/80">Rare Edition</div>
-                </div>
+              <div className="text-right">
+                <span className="text-[9px] font-bold text-neutral-600 uppercase tracking-widest block">FEATURED</span>
+                <span className="text-xs font-serif font-bold text-[#1A1A1A]">AUTUMN HIGHLIGHT</span>
               </div>
+            </div>
 
-              {/* Main Center Featured Book Card */}
-              <div className="relative z-20 w-64 aspect-[9/14] bg-white rounded-2xl border-4 border-[#D97706] shadow-2xl p-4 flex flex-col justify-between transform hover:scale-105 transition-transform duration-500">
-                <div className="flex justify-between items-center border-b border-[#D97706]/20 pb-2">
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#D97706] bg-[#D97706]/10 px-2.5 py-0.5 rounded-full">
-                    BAZAAR TOP PICK
-                  </span>
-                  <div className="flex items-center gap-1 text-[#D97706]">
-                    <Star className="w-3.5 h-3.5 fill-[#D97706]" />
-                    <span className="text-[10px] font-bold">4.9</span>
-                  </div>
-                </div>
-
-                <div className="my-auto text-center space-y-2 py-4">
-                  <div className="w-12 h-12 rounded-full bg-[#D97706]/10 text-[#D97706] flex items-center justify-center mx-auto">
-                    <BookOpen className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-lg font-serif font-bold text-[#1C1917]">The Archival Library</h3>
-                  <p className="text-[11px] text-[#1C1917]/70 font-sans">Over 10,000+ timeless EPUB volumes instant delivery.</p>
-                </div>
-
-                <div className="pt-3 border-t border-[#D97706]/20 flex items-center justify-between text-[10px] font-bold">
-                  <span className="text-[#C85A32]">EPUB FORMAT</span>
-                  <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">INSTANT</span>
-                </div>
-              </div>
-
+            <div className="space-y-3 pt-4">
+              <h3 className="text-base font-serif font-bold text-[#1A1A1A] leading-snug">
+                The good old days with the filter off — essential modern memoir.
+              </h3>
+              <Link 
+                href="/collections?category=Non-Fiction"
+                className="inline-block bg-[#1A1A1A] hover:bg-[#0C4A60] text-white text-[11px] font-bold uppercase tracking-widest px-6 py-2.5 rounded-xs transition-colors"
+              >
+                SHOP NOW
+              </Link>
             </div>
           </div>
 
         </div>
+
+        {/* Navigation Arrow Right */}
+        <button 
+          aria-label="Next slide"
+          className="hidden md:flex absolute -right-2 lg:right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 bg-white/90 hover:bg-white text-[#0C4A60] rounded-full shadow-md items-center justify-center border border-neutral-200 transition-all hover:scale-110"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
       </div>
     </section>
   );

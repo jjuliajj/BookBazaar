@@ -1,18 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F9F6F0;
-  --foreground: #2C3437;
-  --accent-gold: #C5A059;
-  --pavilion-border: #D8CEBE;
+  --background: #FFFFFF;
+  --foreground: #1A1A1A;
+  --teal-primary: #0C4A60;
+  --teal-hover: #083344;
+  --ochre-accent: #8C7355;
+  --ochre-hover: #755F45;
+  --waterstones-green: #15803D;
+  --stone-surface: #F8F8F7;
+  --border-hairline: #E5E5E5;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 h1, h2, h3, .font-serif {
-  font-family: var(--font-playfair), serif;
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
 }
+

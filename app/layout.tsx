@@ -56,7 +56,7 @@ export default function RootLayout({
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
       </head>
       <body 
-        className="min-h-full flex flex-col font-jakarta bg-[#FAF6F0] text-[#1C1917]"
+        className="min-h-full flex flex-col font-jakarta bg-white text-[#1C1C1C]"
         suppressHydrationWarning
       >
         <CartProvider>

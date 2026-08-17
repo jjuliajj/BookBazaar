@@ -26,59 +26,60 @@ export default function CartPage() {
   if (!isMounted) return null;
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#FAF6F0] text-[#1C1917]">
+    <main className="flex min-h-screen flex-col bg-white text-[#1A1A1A] font-jakarta">
       <Navbar />
       
-      <section className="pt-28 pb-20">
-        <div className="container mx-auto px-4 sm:px-6 md:px-12 max-w-5xl">
+      <section className="pt-32 sm:pt-36 pb-20">
+        <div className="container mx-auto px-4 sm:px-8 md:px-12 max-w-5xl text-left">
+          
           {/* Header & Back link */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-neutral-300 pb-4">
             <div>
-              <Link href="/collections" className="inline-flex items-center text-xs font-bold text-[#C85A32] hover:text-[#D97706] transition-colors mb-2 uppercase tracking-widest gap-2 group">
+              <Link href="/collections" className="inline-flex items-center text-xs font-bold text-neutral-500 hover:text-[#0C4A60] transition-colors mb-2 uppercase tracking-wider gap-1.5 group">
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                Back to Collections
+                Continue Browsing Books
               </Link>
-              <h1 className="text-3xl md:text-4xl font-serif font-bold text-[#1C1917] flex items-center gap-3">
-                <ShoppingBag className="w-8 h-8 text-[#D97706]" />
-                Your Shopping Cart
+              <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A] flex items-center gap-2.5">
+                <ShoppingBag className="w-7 h-7 text-[#0C4A60]" />
+                Your Shopping Basket
               </h1>
             </div>
-            <span className="text-xs font-bold text-[#D97706] bg-[#D97706]/10 px-4 py-2 rounded-full border border-[#D97706]/20 w-fit">
-              {fullCartItems.length} {fullCartItems.length === 1 ? 'Volume' : 'Volumes'} Selected
+            <span className="text-xs font-bold text-[#0C4A60] bg-[#F8F8F7] px-3.5 py-1.5 rounded-xs border border-neutral-200 w-fit">
+              {fullCartItems.length} {fullCartItems.length === 1 ? 'Title' : 'Titles'} Selected
             </span>
           </div>
 
           {fullCartItems.length === 0 ? (
-            <div className="bg-white rounded-3xl p-12 text-center border border-[#D97706]/20 shadow-md max-w-lg mx-auto my-8">
-              <div className="w-16 h-16 bg-[#D97706]/10 text-[#D97706] rounded-2xl flex items-center justify-center mx-auto mb-4 border border-[#D97706]/20">
-                <ShoppingBag className="w-8 h-8" />
+            <div className="bg-[#F8F8F7] rounded-xs p-12 text-center border border-neutral-200 shadow-xs max-w-lg mx-auto my-8">
+              <div className="w-14 h-14 bg-neutral-200 text-[#0C4A60] rounded-xs flex items-center justify-center mx-auto mb-4">
+                <ShoppingBag className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-serif font-bold text-[#1C1917] mb-2">Your Cart is Empty</h3>
-              <p className="text-xs text-[#1C1917]/70 mb-6">Explore our curated global bazaar library and discover your next book.</p>
+              <h3 className="text-xl font-serif font-bold text-[#1A1A1A] mb-2">Your Basket is Empty</h3>
+              <p className="text-xs text-neutral-600 mb-6">Explore our curated bookstore collection and discover your next read.</p>
               <Link 
                 href="/collections" 
-                className="inline-flex items-center gap-2 bg-[#D97706] hover:bg-[#C85A32] text-white px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md"
+                className="inline-flex items-center gap-2 bg-[#0C4A60] hover:bg-[#083344] text-white px-8 py-3 rounded-xs font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
               >
-                <span>Browse Bazaar</span>
+                <span>Browse Catalog</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           ) : (
             <div className="grid lg:grid-cols-12 gap-8 items-start">
               
-              {/* Cart Item List Container */}
+              {/* Basket Item List Container */}
               <div className="lg:col-span-7 space-y-4">
                 {fullCartItems.map((item) => (
                   <div 
                     key={item.id} 
-                    className="bg-white rounded-2xl p-4 border border-[#D97706]/20 shadow-xs hover:border-[#D97706] transition-all flex gap-4 items-center group"
+                    className="bg-[#F8F8F7] rounded-xs p-4 border border-neutral-200 shadow-xs hover:border-[#0C4A60] transition-all flex gap-4 items-center group"
                   >
                     {/* Book Cover */}
-                    <Link href={`/products/${item.id}`} className="w-16 md:w-20 aspect-[9/16] bg-[#FAF6F0] rounded-xl overflow-hidden flex-shrink-0 shadow-md border border-[#D97706]/20 block group-hover:scale-105 transition-transform duration-300">
+                    <Link href={`/products/${item.id}`} className="w-16 md:w-20 aspect-[3/4] bg-white rounded-xs overflow-hidden flex-shrink-0 shadow-xs border border-neutral-200 block group-hover:scale-102 transition-transform duration-300">
                       {item.cover_url ? (
                         <img src={item.cover_url} alt={item.title} className="object-cover w-full h-full" />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-[#FAF6F0] text-[#D97706] text-[9px] font-serif italic text-center p-1">
+                        <div className="w-full h-full flex items-center justify-center bg-neutral-100 text-[#0C4A60] text-[9px] font-serif italic text-center p-1">
                           {item.title}
                         </div>
                       )}
@@ -87,31 +88,31 @@ export default function CartPage() {
                     {/* Book Info */}
                     <div className="flex-grow min-w-0 space-y-1.5">
                       <div className="flex justify-between items-start gap-2">
-                        <Link href={`/products/${item.id}`} className="font-serif text-base md:text-lg font-bold text-[#1C1917] hover:text-[#D97706] transition-colors line-clamp-1">
+                        <Link href={`/products/${item.id}`} className="font-serif text-base font-bold text-[#1A1A1A] hover:text-[#0C4A60] transition-colors line-clamp-1">
                           {item.title}
                         </Link>
-                        <span className="font-bold text-[#C85A32] text-sm whitespace-nowrap">
-                          {item.price && item.price.startsWith('$') ? item.price : `$${item.price || '0.00'}`}
+                        <span className="font-bold text-[#0C4A60] text-sm whitespace-nowrap">
+                          {item.price && item.price.startsWith('£') ? item.price : `£${item.price || '14.99'}`}
                         </span>
                       </div>
 
-                      <p className="text-xs text-[#1C1917]/70 italic">
-                        by {item.author}
+                      <p className="text-xs text-neutral-600">
+                        by {item.author} • <span className="font-medium text-neutral-500">Digital EPUB</span>
                       </p>
 
                       <div className="flex items-center justify-between pt-2">
                         {/* Quantity Pill */}
-                        <div className="flex items-center space-x-3 bg-[#FAF6F0] border border-[#D97706]/20 rounded-full px-3 py-1">
+                        <div className="flex items-center space-x-3 bg-white border border-neutral-300 rounded-xs px-2.5 py-1">
                           <button 
-                            className="text-[#1C1917]/60 hover:text-[#D97706] transition-colors p-0.5"
+                            className="text-neutral-500 hover:text-[#0C4A60] transition-colors p-0.5"
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
                             title="Decrease quantity"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
-                          <span className="text-xs font-bold text-[#1C1917] w-4 text-center">{item.quantity}</span>
+                          <span className="text-xs font-bold text-[#1A1A1A] w-4 text-center">{item.quantity}</span>
                           <button 
-                            className="text-[#1C1917]/60 hover:text-[#D97706] transition-colors p-0.5"
+                            className="text-neutral-500 hover:text-[#0C4A60] transition-colors p-0.5"
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
                             title="Increase quantity"
                           >
@@ -121,11 +122,12 @@ export default function CartPage() {
 
                         {/* Remove Button */}
                         <button 
-                          className="text-rose-500 hover:text-rose-700 hover:bg-rose-50 p-2 rounded-lg transition-all"
+                          className="text-rose-600 hover:text-rose-800 hover:bg-rose-50 p-1.5 rounded-xs transition-all text-xs font-medium flex items-center gap-1"
                           onClick={() => removeFromCart(item.id)}
                           title="Remove item"
                         >
-                          <Trash2 className="w-4 h-4" />
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span className="text-[11px]">Remove</span>
                         </button>
                       </div>
                     </div>
@@ -133,47 +135,47 @@ export default function CartPage() {
                 ))}
               </div>
 
-              {/* Order Summary Box - High Contrast & Crystal Clear Text */}
+              {/* Order Summary Box */}
               <div className="lg:col-span-5">
-                <div className="bg-[#1C1917] text-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-[#D97706]/40 space-y-6 sticky top-28">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                    <h2 className="font-serif text-xl font-bold flex items-center gap-2 text-white">
-                      <Sparkles className="w-5 h-5 text-[#D97706]" /> Order Summary
+                <div className="bg-[#F8F8F7] text-[#1A1A1A] rounded-xs p-6 md:p-8 shadow-xs border border-neutral-300 space-y-6 sticky top-36">
+                  <div className="flex items-center justify-between border-b border-neutral-300 pb-3">
+                    <h2 className="font-serif text-xl font-bold flex items-center gap-2 text-[#1A1A1A]">
+                      <Sparkles className="w-5 h-5 text-[#0C4A60]" /> Basket Summary
                     </h2>
-                    <span className="text-xs font-bold text-[#D97706] bg-[#D97706]/20 px-2.5 py-1 rounded-full uppercase">EPUB Instant</span>
+                    <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-xs uppercase">Instant EPUB</span>
                   </div>
 
-                  <div className="space-y-3 text-xs text-white">
-                    <div className="flex justify-between text-white/90">
-                      <span className="font-medium text-white/80">Subtotal ({fullCartItems.length} items)</span>
-                      <span className="font-bold text-white text-sm">${cartTotal.toFixed(2)}</span>
+                  <div className="space-y-3 text-xs">
+                    <div className="flex justify-between text-neutral-600">
+                      <span>Subtotal ({fullCartItems.length} items)</span>
+                      <span className="font-bold text-[#1A1A1A] text-sm">£{cartTotal.toFixed(2)}</span>
                     </div>
-                    <div className="flex justify-between text-white/90">
-                      <span className="font-medium text-white/80">Digital Delivery</span>
-                      <span className="text-emerald-400 font-bold uppercase tracking-wider text-[10px]">FREE INSTANT DOWNLOAD</span>
+                    <div className="flex justify-between text-neutral-600">
+                      <span>Worldwide Delivery</span>
+                      <span className="text-emerald-700 font-bold uppercase tracking-wider text-[10px]">FREE INSTANT DOWNLOAD</span>
                     </div>
-                    <div className="flex justify-between text-white/90">
-                      <span className="font-medium text-white/80">Estimated Tax</span>
-                      <span className="font-bold text-white">$0.00</span>
+                    <div className="flex justify-between text-neutral-600">
+                      <span>Estimated VAT/Taxes</span>
+                      <span className="font-bold text-[#1A1A1A]">£0.00</span>
                     </div>
 
-                    <div className="flex justify-between items-baseline pt-4 border-t border-white/10">
-                      <span className="text-base font-bold text-white">Total Due</span>
-                      <span className="text-3xl font-extrabold text-[#D97706]">${cartTotal.toFixed(2)}</span>
+                    <div className="flex justify-between items-baseline pt-4 border-t border-neutral-300">
+                      <span className="text-base font-bold text-[#1A1A1A]">Total Due</span>
+                      <span className="text-2xl font-black text-[#0C4A60]">£{cartTotal.toFixed(2)}</span>
                     </div>
                   </div>
 
                   <Link 
                     href="/checkout" 
-                    className="w-full bg-gradient-to-r from-[#D97706] to-[#C85A32] hover:from-[#C85A32] hover:to-[#D97706] text-white py-4 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#D97706]/30 flex items-center justify-center gap-2 group"
+                    className="w-full bg-[#0C4A60] hover:bg-[#083344] text-white py-3.5 rounded-xs font-bold text-xs uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-2 group"
                   >
-                    <span>Proceed to Checkout</span>
+                    <span>PROCEED TO CHECKOUT</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
 
-                  <div className="pt-2 border-t border-white/10 flex items-center justify-center gap-2 text-[10px] text-white/70 uppercase tracking-widest text-center">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                    <span>Instant Direct Download Access</span>
+                  <div className="pt-2 border-t border-neutral-300 flex items-center justify-center gap-2 text-[10px] text-neutral-500 uppercase tracking-wider text-center">
+                    <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>Instant Direct Download • DRM-Free</span>
                   </div>
                 </div>
               </div>

@@ -15,27 +15,27 @@ export default function AddToCartActions({ bookId }: { bookId: string }) {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row gap-3 pt-2">
+    <div className="flex flex-col sm:flex-row gap-3 pt-2 font-jakarta">
       <button 
         onClick={handleAdd}
-        className="bg-charcoal hover:bg-coral text-paper-beige px-8 py-3.5 rounded-full font-manrope font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md flex items-center justify-center space-x-2.5 flex-1"
+        className="bg-[#0C4A60] hover:bg-[#083344] text-white px-8 py-3.5 rounded-xs font-bold text-xs uppercase tracking-wider transition-all shadow-sm flex items-center justify-center space-x-2.5 flex-1"
       >
         {added ? (
           <>
-            <Check className="w-4 h-4 text-emerald-400" />
-            <span>Added to Cart</span>
+            <Check className="w-4 h-4 text-emerald-300 stroke-[2.5]" />
+            <span>Added to Basket</span>
           </>
         ) : (
           <>
             <ShoppingBag className="w-4 h-4" />
-            <span>Add to Cart</span>
+            <span>Add to Basket (Instant EPUB)</span>
           </>
         )}
       </button>
       
-      <button className="border border-charcoal/15 px-6 py-3.5 rounded-full font-manrope font-bold text-charcoal hover:bg-charcoal/5 transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2">
-        <Heart className="w-4 h-4 text-coral" />
-        <span>Wishlist</span>
+      <button className="border border-neutral-300 bg-white hover:bg-neutral-50 text-neutral-800 px-6 py-3.5 rounded-xs font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+        <Heart className="w-4 h-4 text-[#0C4A60]" />
+        <span>Add to Wishlist</span>
       </button>
     </div>
   );

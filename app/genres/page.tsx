@@ -3,18 +3,17 @@ import Footer from "@/components/Footer";
 import BookCard from "@/components/BookCard";
 import { getBooks } from "@/lib/api";
 import Link from "next/link";
-import { BookOpen, Sparkles, Compass, ArrowRight, Layers, Bookmark } from "lucide-react";
+import { Bookmark, ChevronRight, Layers } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Browse by Literary Genre",
-  description: "Explore curated e-books categorized by philosophy, non-fiction, fiction, poetry, and classic literature.",
+  title: "Categories & Genres | BookBazaar",
+  description: "Browse literature by subject, genre, and category in our Waterstones-inspired digital bookstore.",
 };
 
 export default async function GenresPage() {
   const books = await getBooks();
 
-  // Distinct genres with count and sample books
   const genreNames = Array.from(new Set(books.map((b) => b.category).filter(Boolean)));
   
   const genreData = genreNames.map((genre) => {
@@ -27,118 +26,88 @@ export default async function GenresPage() {
   });
 
   return (
-    <main className="flex min-h-screen flex-col bg-paper-beige">
+    <main className="flex min-h-screen flex-col bg-white text-[#1A1A1A] font-jakarta">
       <Navbar />
 
-      <section className="pt-28 pb-20">
-        <div className="container mx-auto px-6 md:px-12 max-w-7xl space-y-12">
+      <section className="pt-32 sm:pt-36 pb-16">
+        <div className="container mx-auto px-4 sm:px-8 md:px-12 max-w-7xl space-y-10">
           
-          {/* Header Card Container */}
-          <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-charcoal/10 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-            <div className="space-y-3 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-coral/10 text-coral text-xs font-bold rounded-full border border-coral/20 uppercase tracking-widest font-manrope">
-                <Compass className="w-3.5 h-3.5" /> Literary Landscape
-              </div>
-              <h1 className="text-4xl md:text-5xl font-newsreader font-bold text-charcoal leading-tight">
-                Explore by <span className="text-coral italic font-normal">Genre</span>
+          {/* Breadcrumb Navigation */}
+          <nav className="flex items-center gap-1.5 text-xs text-neutral-500 font-medium">
+            <Link href="/" className="hover:text-[#0C4A60]">Home</Link>
+            <ChevronRight className="w-3 h-3 text-neutral-400" />
+            <span className="text-neutral-900 font-bold">Categories & Genres</span>
+          </nav>
+
+          {/* Header */}
+          <div className="border-b border-neutral-300 pb-4 flex flex-col md:flex-row md:items-end justify-between gap-4 text-left">
+            <div>
+              <span className="text-[10px] font-bold text-[#0C4A60] uppercase tracking-widest block">
+                BROWSE BY SUBJECT
+              </span>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1A1A1A] leading-tight">
+                Literary Categories Matrix
               </h1>
-              <p className="text-xs md:text-sm font-manrope text-charcoal/60 leading-relaxed">
-                From philosophical inquiry to speculative fiction, discover curated literature organized by literary genre and subject matter.
+              <p className="text-xs text-neutral-600 mt-1">
+                Explore our curated digital library organized across {genreData.length} distinct subject avenues.
               </p>
             </div>
 
-            {/* Total Genres Badge */}
-            <div className="bg-gradient-to-br from-charcoal to-slate-900 text-paper-beige px-6 py-5 rounded-2xl border border-charcoal/20 shadow-md flex items-center gap-4 flex-shrink-0">
-              <div className="w-10 h-10 rounded-xl bg-coral/20 text-coral flex items-center justify-center font-bold">
-                <Layers className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-2xl font-newsreader font-bold">{genreData.length} Categories</div>
-                <div className="text-[10px] font-manrope font-semibold text-paper-beige/40 uppercase tracking-widest">
-                  {books.length} Total Volumes
-                </div>
-              </div>
+            <div className="text-xs text-neutral-600 font-bold bg-[#F8F8F7] px-3.5 py-2 rounded-xs border border-neutral-200 flex items-center gap-2">
+              <Layers className="w-4 h-4 text-[#0C4A60]" />
+              <span>{books.length} Total Curated Volumes</span>
             </div>
           </div>
 
-          {/* Genre Cards Grid */}
+          {/* Genre Matrix Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {genreData.map((genre) => (
               <Link
                 key={genre.name}
                 href={`/collections?category=${encodeURIComponent(genre.name)}`}
-                className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 border border-charcoal/10 shadow-xs hover:shadow-xl hover:border-coral/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group space-y-6"
+                className="bg-[#F8F8F7] hover:bg-neutral-100 p-6 rounded-xs border border-neutral-200 hover:border-[#0C4A60] transition-all flex flex-col justify-between group space-y-4 text-left"
               >
-                <div className="space-y-4">
-                  {/* Genre Header */}
-                  <div className="flex justify-between items-center">
-                    <div className="w-10 h-10 rounded-2xl bg-coral/10 text-coral flex items-center justify-center border border-coral/20 group-hover:bg-coral group-hover:text-white transition-colors duration-300">
-                      <Bookmark className="w-5 h-5" />
-                    </div>
-                    <span className="text-xs font-manrope font-bold text-charcoal/50 bg-charcoal/5 px-3 py-1 rounded-full border border-charcoal/5">
-                      {genre.count} {genre.count === 1 ? 'Volume' : 'Volumes'}
-                    </span>
+                <div className="flex items-center justify-between">
+                  <div className="w-9 h-9 rounded-xs bg-[#0C4A60] text-white flex items-center justify-center shadow-xs">
+                    <Bookmark className="w-4 h-4" />
                   </div>
-
-                  <div>
-                    <h2 className="font-newsreader text-2xl font-bold text-charcoal group-hover:text-coral transition-colors">
-                      {genre.name}
-                    </h2>
-                    <p className="text-xs font-manrope text-charcoal/50 mt-1">
-                      Curated {genre.name.toLowerCase()} works & foundational archives.
-                    </p>
-                  </div>
+                  <span className="text-xs font-bold text-neutral-500 bg-white px-2.5 py-1 rounded-xs border border-neutral-200">
+                    {genre.count} {genre.count === 1 ? 'Edition' : 'Editions'}
+                  </span>
                 </div>
 
-                {/* Overlapping 9:16 Sample Book Covers */}
-                <div className="flex items-center gap-3 pt-2">
-                  <div className="flex -space-x-4 overflow-hidden py-1">
-                    {genre.sampleBooks.map((book, idx) => (
-                      <div
-                        key={book.id}
-                        className="w-10 aspect-[9/16] bg-charcoal/10 rounded-lg overflow-hidden border-2 border-white shadow-sm flex-shrink-0 transition-transform group-hover:translate-x-1"
-                        style={{ zIndex: 10 - idx }}
-                      >
-                        {book.cover_url ? (
-                          <img src={book.cover_url} alt={book.title} className="w-full h-full object-cover" />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-charcoal/10">
-                            <BookOpen className="w-3 h-3 text-charcoal/30" />
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                  <span className="text-xs font-manrope font-bold text-coral group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 ml-auto">
-                    <span>Explore Category</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
+                <div>
+                  <h2 className="font-serif text-xl font-bold text-[#1A1A1A] group-hover:text-[#0C4A60] transition-colors">
+                    {genre.name}
+                  </h2>
+                  <p className="text-xs text-neutral-600 mt-1">
+                    Curated {genre.name.toLowerCase()} volumes and digital masterpieces.
+                  </p>
+                </div>
+
+                <div className="pt-2 border-t border-neutral-200 flex items-center justify-between text-xs font-bold text-[#0C4A60]">
+                  <span>Explore All {genre.name}</span>
+                  <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
             ))}
           </div>
 
-          {/* Featured Releases Section with 9:16 BookCards */}
-          <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 border border-charcoal/10 shadow-sm space-y-6 pt-8">
-            <div className="flex items-center justify-between border-b border-charcoal/10 pb-4">
-              <div>
-                <span className="text-[10px] font-manrope font-bold uppercase tracking-[0.2em] text-coral">
-                  Curated Highlights
-                </span>
-                <h2 className="text-2xl font-newsreader font-bold text-charcoal">
-                  Featured Library Releases
-                </h2>
-              </div>
+          {/* Curated Shelf of all books */}
+          <div className="pt-8 border-t border-neutral-300 space-y-6 text-left">
+            <div className="flex items-baseline justify-between border-b border-neutral-300 pb-2">
+              <h2 className="text-xl font-serif italic text-[#1A1A1A]">
+                Highlighted Catalog Titles
+              </h2>
               <Link
                 href="/collections"
-                className="text-xs font-manrope font-bold text-charcoal/60 hover:text-coral transition-colors flex items-center gap-1 uppercase tracking-wider"
+                className="text-xs font-bold uppercase tracking-wider text-[#0C4A60] hover:underline"
               >
-                <span>View All ({books.length})</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                View All ({books.length})
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {books.slice(0, 6).map((book) => (
                 <BookCard
                   key={book.id}
@@ -161,3 +130,4 @@ export default async function GenresPage() {
     </main>
   );
 }
+
