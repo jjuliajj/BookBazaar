@@ -37,11 +37,10 @@ export default function Footer() {
               Explore Editions
             </h4>
             <ul className="space-y-2.5 text-neutral-400">
-              <li><Link href="/collections" className="hover:text-white transition-colors">Bestsellers</Link></li>
-              <li><Link href="/collections?category=Fiction" className="hover:text-white transition-colors">Fiction Highlights</Link></li>
-              <li><Link href="/collections?category=Non-Fiction" className="hover:text-white transition-colors">Non-Fiction Essentials</Link></li>
+              <li><Link href="/collections" className="hover:text-white transition-colors">All Curated Titles</Link></li>
               <li><Link href="/genres" className="hover:text-white transition-colors">Categories & Genres</Link></li>
-              <li><Link href="/authors" className="hover:text-white transition-colors">Author Directory</Link></li>
+              <li><Link href="/authors" className="hover:text-white transition-colors">Master Author Directory</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">Curator Selection</Link></li>
             </ul>
           </div>
 

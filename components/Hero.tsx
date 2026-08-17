@@ -75,7 +75,7 @@ export default function Hero() {
                 Viva Las Vegas with the bestselling Trainspotting author's digital masterwork.
               </p>
               <Link 
-                href="/collections?category=Fiction"
+                href="/collections"
                 className="inline-block bg-white hover:bg-amber-300 text-[#1A1A1A] text-[11px] font-black uppercase tracking-widest px-6 py-2.5 rounded-xs transition-colors shadow-sm"
               >
                 SHOP NOW
@@ -106,7 +106,7 @@ export default function Hero() {
                 The good old days with the filter off — essential modern memoir.
               </h3>
               <Link 
-                href="/collections?category=Non-Fiction"
+                href="/collections"
                 className="inline-block bg-[#1A1A1A] hover:bg-[#0C4A60] text-white text-[11px] font-bold uppercase tracking-widest px-6 py-2.5 rounded-xs transition-colors"
               >
                 SHOP NOW
